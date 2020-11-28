@@ -38,6 +38,7 @@ const batch = [
   mystery5,
 ];
 
+
 // Add your functions below:
 let validateCred = (arr) => {
   let sumArr = [];
@@ -65,10 +66,38 @@ let validateCred = (arr) => {
 
 console.log(batch.map((element) => validateCred(element)));
 
+
 //Return arr of invalid cards
 let findInvalidCards = (arr) => {
   return arr.filter((element) => !validateCred(element));
-
 };
 
 console.log(findInvalidCards(batch));
+
+
+//Identify invalid card companies
+let idInvalidCardCompanies = (arr) => {
+  let invalidCards = findInvalidCards(arr);
+
+  let companies = invalidCards.map((element) => {
+    if (element[0] === 3) {
+      return "American Express";
+    } else if (element[0] === 4) {
+      return "Visa";
+    } else if (element[0] === 5) {
+      return "Mastercard";
+    } else if (element[0] === 6) {
+      return "Discover";
+    } else {
+      return "Company not found";
+    }
+  });
+
+  let uniqueCompanies = new Set()
+  for (let company of companies) {
+    uniqueCompanies.add(company)
+  }
+  return [...uniqueCompanies]
+};
+
+console.log(idInvalidCardCompanies(batch));
