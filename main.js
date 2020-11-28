@@ -64,3 +64,11 @@ let validateCred = (arr) => {
 };
 
 console.log(batch.map((element) => validateCred(element)));
+
+//Return arr of invalid cards
+let findInvalidCards = (arr) => {
+  return arr.filter((element) => !validateCred(element));
+
+};
+
+console.log(findInvalidCards(batch));
