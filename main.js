@@ -38,7 +38,6 @@ const batch = [
   mystery5,
 ];
 
-
 // Add your functions below:
 let validateCred = (arr) => {
   let sumArr = [];
@@ -66,14 +65,12 @@ let validateCred = (arr) => {
 
 console.log(batch.map((element) => validateCred(element)));
 
-
 //Return arr of invalid cards
 let findInvalidCards = (arr) => {
   return arr.filter((element) => !validateCred(element));
 };
 
 console.log(findInvalidCards(batch));
-
 
 //Identify invalid card companies
 let idInvalidCardCompanies = (arr) => {
@@ -93,11 +90,24 @@ let idInvalidCardCompanies = (arr) => {
     }
   });
 
-  let uniqueCompanies = new Set()
+  let uniqueCompanies = new Set();
   for (let company of companies) {
-    uniqueCompanies.add(company)
+    uniqueCompanies.add(company);
   }
-  return [...uniqueCompanies]
+  return [...uniqueCompanies];
 };
 
 console.log(idInvalidCardCompanies(batch));
+
+//Changing any string with credit card numbers into lists
+let newBatch = "4532521538202783, 4532995213585458, 4556262398180779108";
+
+let stringIntoList = (str) => {
+  let newStr = str.split(", ");
+  console.log(newStr);
+  return newStr.map((element) => {
+    return element.split("").map((element) => parseInt(element));
+  });
+};
+
+let newBatchList = stringIntoList(newBatch);
